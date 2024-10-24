@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\title{Документация для geometric\_lib}
+\author{Минаков Дмитрий \\M3113 \\Жуйков Артем}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{green},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true
+}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Содержание}
+- Общее описание библиотеки geometric\_lib\\
+- Описание работы программы canculate.py\\
+- Описание работы программы circle.py\\
+- Описание работы программы square.py\\
+- Описание работы программы triangle.py
+
+
+\section{Общее описание библиотеки geometric\_lib}
+Библиотека geometric\_lib решает задачи, связанные с геометрическими вычислениями. Она предоставляет инструменты для работы с различными геометрическими фигурами и их свойствами. Программы из этого репозитория могут использоваться для решения задач, таких как определение площади и периметра фигур.
+
+\section{Описание работы программы canculate.py}
+Эта программа предназначена для вызова функций для вычисления периметра или площади заданных геометрических фигур. Она использует функции, определенные в модулях, которые должны быть импортированы в программу.
+\\
+Функция calc, отвечает за получение необходиммых данных из соответствующих функций и вывод результата их выполнения в консоль.
+
+\begin{lstlisting}
+def calc(fig, func, size):
+    assert fig in figs
+    assert func in funcs
+    
+    result = eval(f'{fig}.{func}(*{size})')
+    print(f'{func} of {fig} is {result}')
+\end{lstlisting}
+\\
+Данная часть программы отвечает за корректный ввод необходимых данных для вычисления и за вызов функции calc
+
+\begin{lstlisting}
+if __name__ == "__main__":
+    func = ''
+    fig = ''
+    size = list()
+    
+    while fig not in figs:
+        fig = input(f"Enter figure name, avaliable are {figs}:\n")
+    
+    while func not in funcs:
+        func = input(f"Enter function name, avaliable are {funcs}:\n")
+    
+    while len(size) != sizes.get(f"{func}-{fig}", 1):
+        size = list(map(int, input("Input figure sizes separated by space, 1 for circle and square\n").split(' ')))
+    
+    calc(fig, func, size)
+
+\end{lstlisting}
+
+\section{Описание работы программы circle.py}
+Эта программа предназначена для выполнения вычислений, связанных с окружностью круга. Она включает две основные функции: одну для вычисления площади круга и другую для вычисления периметра (длины окружности) круга, основываясь на заданном радиусе.
+\\
+Функция area(r):
+принимает радиус круга r в качестве аргумента и возвращает площадь круга, вычисляя её по формуле:
+$$
+S = \pi r^2
+$$
+
+\begin{lstlisting}
+def area(r):
+    return math.pi * r * r
+\end{lstlisting}
+\\
+Функция perimeter(r):
+принимает радиус круга r в качестве аргумента и возвращает периметр окружности, вычисляя его по формуле:
+$$
+P = 2 \pi r
+$$
+
+\begin{lstlisting}
+def perimeter(r):
+    return 2 * math.pi * r
+\end{lstlisting}
+
+
+\section{Описание работы программы square.py}
+Эта программа предназначена для выполнения вычислений, связанных с квадратом. Она включает две основные функции: одну для вычисления площади квадрата и другую для вычисления периметра квадрата, основываясь на заданной длине стороны.
+\\
+Функция area(a):
+Эта функция принимает длину стороны квадрата a в качестве аргумента и возвращает площадь квадрата по формуле.
+
+$$
+S = a^2
+$$
+
+\begin{lstlisting}
+def area(a):
+    return a * a
+\end{lstlisting}
+\\
+Функция perimeter(a):
+Эта функция принимает длину стороны квадрата a в качестве аргумента и возвращает периметр квадрата формуле.
+
+$$
+P = 4a
+$$
+
+\begin{lstlisting}
+def perimeter(a):
+    return 4 * a
+
+\end{lstlisting}
+
+\section{Описание работы программы triangle.py}
+Эта программа предназначена для выполнения вычислений, связанных с треугольником. Она включает две основные функции: одну для вычисления полупериметра треугольника и другую для вычисления периметра треугольника, основываясь на заданных длинах его сторон.
+\\
+Функция area(a, b, c):
+Описание: Эта функция принимает длины трех сторон треугольника a, b и c в качестве аргументов и возвращает полупериметр треугольника по формуле.
+$$
+p = \frac{(a + b + c)}{2}
+$$
+
+\begin{lstlisting}
+def area(a, b, c):
+    return (a + b + c) / 2
+\end{lstlisting}
+\\
+Функция perimeter(a, b, c):
+
+Описание: Эта функция принимает длины трех сторон треугольника a, b и c в качестве аргументов и возвращает периметр треугольника.
+Формула: Периметр треугольника вычисляется по формуле.
+$$
+P = a + b + c
+$$
+
+\begin{lstlisting}
+def perimeter(a, b, c):
+    return a + b + c
+\end{lstlisting}
+
+\section{Ссылки}
+github: \url{https://github.com/n1ckerr0r/doc-in-LaTeX-for-geometric\_lib}
+
+\end{document}
