@@ -21,6 +21,13 @@
     breaklines=true
 }
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=green,
+    urlcolor=blue
+}
+
 \begin{document}
 
 \maketitle
